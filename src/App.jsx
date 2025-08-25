@@ -1,4 +1,5 @@
 import reactLogo from './assets/react.svg';
+import gradialLogo from './assets/gradial_logo.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
@@ -14,7 +15,10 @@ function App() {
             <img src={reactLogo} className='logo react' alt='React logo' />
           </a>
         </div>
-        <h1>Gradial AI - RT Proto</h1>
+        <h1 className='sub-header-wrapper'>
+          <img src={gradialLogo} className='logo gradial' alt='Gradial logo' />
+          <span className='subtitle'>- RT Proto</span>
+        </h1>
         {/* <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
