@@ -67,10 +67,10 @@ export default function Tree() {
             }
           }}
           showCheckbox={false}
-          indentPixels={50}
+          indentPixels={30}
           onNameClick={onNameClick}
         />
-        <button onClick={saveToFirestore}>Save to Firestore</button>
+        <button onClick={saveToFirestore}>Save Modifications</button>
       </div>
     </div>
   );
