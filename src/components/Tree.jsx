@@ -50,6 +50,11 @@ export default function Tree() {
     return <div>Loading...</div>;
   }
 
+  const onNameClick = ({ defaultOnClick, nodeData }) => {
+    if (nodeData.name === 'Gradial (Main)') return;
+    defaultOnClick();
+  };
+
   return (
     <div className='tree-directory'>
       <div>
@@ -63,6 +68,7 @@ export default function Tree() {
           }}
           showCheckbox={false}
           indentPixels={50}
+          onNameClick={onNameClick}
         />
         <button onClick={saveToFirestore}>Save to Firestore</button>
       </div>
