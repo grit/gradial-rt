@@ -87,3 +87,14 @@ button:focus-visible {
   min-width: 0;
   overflow-x: auto;
 }
+
+.remote-cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #007bff; /* Example color */
+  border-radius: 50%;
+  pointer-events: none; /* Allows clicks to pass through */
+  transform: translate(-50%, -50%); /* Center the cursor on the coordinates */
+  transition: transform 0.1s linear; /* Optional smooth movement */
+}
