@@ -87,7 +87,7 @@ export default function Tree() {
             }
           }}
           showCheckbox={false}
-          indentPixels={30}
+          indentPixels={50}
           onNameClick={onNameClick}
           iconComponents={{ DeleteIcon, FolderOpenIcon }}
         />

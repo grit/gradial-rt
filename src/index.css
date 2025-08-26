@@ -63,10 +63,27 @@ button:focus-visible {
 }
 
 .TreeNode {
-  font-size: 16px;
+  font-size: clamp(12px, 2vw, 12px);
+  margin-bottom: 10px;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.TreeNode .iconContainer {
+  margin-right: 8px;
 }
 
 .AddFolderIcon {
   display: none;
+}
+
+.FolderTree {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
 }
