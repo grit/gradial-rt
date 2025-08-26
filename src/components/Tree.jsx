@@ -50,7 +50,7 @@ export default function Tree() {
   }
 
   return (
-    <div id='demo-sandbox'>
+    <div className='tree-directory'>
       <div>
         <span>Directory</span>
         <FolderTree
@@ -60,6 +60,8 @@ export default function Tree() {
               setTreeState(newTree);
             }
           }}
+          showCheckbox={false}
+          indentPixels={50}
         />
         <button onClick={saveToFirestore}>Save to Firestore</button>
       </div>
