@@ -3,6 +3,9 @@ import { getFirestore, setDoc, doc, onSnapshot } from 'firebase/firestore';
 import { app } from '../config/firebase';
 import { useState, useEffect } from 'react';
 import isEqual from 'lodash/isEqual';
+import styles from './Tree.module.css';
+import { FaRegFolderOpen } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
 
 const db = getFirestore(app);
 
@@ -55,10 +58,27 @@ export default function Tree() {
     defaultOnClick();
   };
 
+  const DeleteIcon = ({ onClick: defaultOnClick, nodeData }) => {
+    if (nodeData.isOpen) return;
+    const handleClick = () => {
+      defaultOnClick();
+    };
+
+    return <MdDelete onClick={handleClick} />;
+  };
+  const FolderOpenIcon = ({ onClick: defaultOnClick, nodeData }) => {
+    const handleClick = () => {
+      if (nodeData.name === 'Gradial (Main)') return;
+      defaultOnClick();
+    };
+
+    return <FaRegFolderOpen onClick={handleClick} />;
+  };
+
   return (
-    <div className='tree-directory'>
+    <div className={styles.wrapper}>
       <div>
-        <span>Directory</span>
+        <div className={styles.heading}>Directory</div>
         <FolderTree
           data={treeState}
           onChange={newTree => {
@@ -69,8 +89,11 @@ export default function Tree() {
           showCheckbox={false}
           indentPixels={30}
           onNameClick={onNameClick}
+          iconComponents={{ DeleteIcon, FolderOpenIcon }}
         />
-        <button onClick={saveToFirestore}>Save Modifications</button>
+        <button className={styles.saveButton} onClick={saveToFirestore}>
+          Save Modifications
+        </button>
       </div>
     </div>
   );

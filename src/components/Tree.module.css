@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.saveButton {
+  margin-top: 20px;
+  background-color: rgb(137, 112, 160);
+  color: white;
+  border: 1px solid rgb(110, 89, 130);
+  cursor: pointer;
+  outline: none;
+}
+
+.saveButton:hover {
+  background-color: rgb(122, 98, 144);
+}
+
+.saveButton:focus,
+.saveButton:active {
+  outline: none;
+  border: 1px solid rgb(110, 89, 130);
+}
