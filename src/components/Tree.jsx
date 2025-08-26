@@ -1,5 +1,5 @@
 import FolderTree from 'react-folder-tree';
-import { getFirestore, setDoc, getDoc, doc } from 'firebase/firestore';
+import { getFirestore, setDoc, doc, onSnapshot } from 'firebase/firestore';
 import { app } from '../config/firebase';
 import { useState, useEffect } from 'react';
 import isEqual from 'lodash/isEqual';
@@ -7,15 +7,15 @@ import isEqual from 'lodash/isEqual';
 const db = getFirestore(app);
 
 export default function Tree() {
-  // Use treeState as the source of truth for FolderTree
   const [treeState, setTreeState] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const docRef = doc(db, 'gradial', 'rt');
-        const docSnap = await getDoc(docRef);
+    const docRef = doc(db, 'gradial', 'rt');
+    // Listen for real-time updates
+    const unsubscribe = onSnapshot(
+      docRef,
+      docSnap => {
         if (docSnap.exists()) {
           setTreeState(docSnap.data());
         } else {
@@ -26,16 +26,17 @@ export default function Tree() {
             children: [],
           });
         }
-      } catch (error) {
+        setLoading(false);
+      },
+      error => {
         alert('Error loading: ' + error.message);
-      } finally {
         setLoading(false);
       }
-    };
-    fetchData();
+    );
+
+    return () => unsubscribe();
   }, []);
 
-  // Save treeState to Firestore
   const saveToFirestore = async () => {
     try {
       await setDoc(doc(db, 'gradial', 'rt'), treeState);
@@ -64,10 +65,6 @@ export default function Tree() {
           indentPixels={50}
         />
         <button onClick={saveToFirestore}>Save to Firestore</button>
-      </div>
-      <div>
-        <span>Directory JSON Structure</span>
-        <pre>{JSON.stringify(treeState, null, 2)}</pre>
       </div>
     </div>
   );
