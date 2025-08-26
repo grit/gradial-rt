@@ -8,11 +8,19 @@ const useWebSocket = url => {
     wsRef.current = new WebSocket(url);
 
     wsRef.current.onmessage = event => {
-      const { id, x, y } = JSON.parse(event.data);
-      setCursors(prevCursors => ({
-        ...prevCursors,
-        [id]: { x, y },
-      }));
+      const { id, x, y, name, left } = JSON.parse(event.data);
+      setCursors(prevCursors => {
+        if (left) {
+          // Remove cursor if left is true
+          const updated = { ...prevCursors };
+          delete updated[id];
+          return updated;
+        }
+        return {
+          ...prevCursors,
+          [id]: { x, y, name: name || 'guest', left: !!left },
+        };
+      });
     };
 
     return () => {
