@@ -27,13 +27,6 @@ function App() {
 
   return (
     <div style={{ height: '100vh', maxHeight: '100vh', overflow: 'hidden' }}>
-      <input
-        type='text'
-        value={name}
-        onChange={e => setName(e.target.value)}
-        placeholder='Enter your name'
-        style={{ position: 'absolute', top: 10, left: 10, zIndex: 1000 }}
-      />
       {Object.entries(cursors).map(([id, cursor]) =>
         cursor.left ? null : (
           <div
@@ -67,7 +60,7 @@ function App() {
         )
       )}
       <Header />
-      <TreeWrapper />
+      <TreeWrapper name={name} setName={setName} />
     </div>
   );
 }

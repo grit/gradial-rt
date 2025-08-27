@@ -12,6 +12,8 @@
   margin-bottom: 10px;
   text-align: center;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .saveButton {
@@ -31,4 +33,16 @@
 .saveButton:active {
   outline: none;
   border: 1px solid rgb(110, 89, 130);
+}
+
+.nameInput {
+  margin-left: 12px;
+  background-color: #b398cfbf;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.nameInput:focus {
+  outline: none;
+  border: 1px solid #b398cfbf;
 }

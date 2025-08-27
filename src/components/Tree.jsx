@@ -9,7 +9,7 @@ import { MdDelete } from 'react-icons/md';
 
 const db = getFirestore(app);
 
-export default function Tree() {
+export default function Tree({ name, setName }) {
   const [treeState, setTreeState] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -78,7 +78,16 @@ export default function Tree() {
   return (
     <div className={styles.wrapper}>
       <div>
-        <div className={styles.heading}>Directory</div>
+        <div className={styles.heading}>
+          <span>Directory</span>
+          <input
+            type='text'
+            value={name}
+            className={styles.nameInput}
+            onChange={e => setName(e.target.value)}
+            placeholder='Pick a name'
+          />
+        </div>
         <FolderTree
           data={treeState}
           onChange={newTree => {
