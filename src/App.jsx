@@ -6,7 +6,7 @@ import favicon from './assets/favicon.ico';
 
 function App() {
   const [name, setName] = useState('guest');
-  const { cursors, send } = useWebSocket('ws://localhost:8080');
+  const { cursors, send } = useWebSocket('wss://gradial-rt-ws.onrender.com');
 
   useEffect(() => {
     const handleMouseMove = e => {
