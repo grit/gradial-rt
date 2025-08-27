@@ -1,7 +1,7 @@
 import TreeWrapper from './components/TreeWrapper';
 import Header from './components/Header';
 import { useEffect, useState } from 'react';
-import useWebSocket from './config/useWebsocket';
+import useWebSocket from './config/useWebSocket';
 import favicon from './assets/favicon.ico';
 import styles from './App.module.css';
 
