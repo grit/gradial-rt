@@ -1,5 +1,12 @@
 import FolderTree from 'react-folder-tree';
-import { getFirestore, setDoc, doc, onSnapshot } from 'firebase/firestore';
+import {
+  getFirestore,
+  setDoc,
+  doc,
+  onSnapshot,
+  updateDoc,
+  arrayUnion,
+} from 'firebase/firestore';
 import { app } from '../config/firebase';
 import { useState, useEffect } from 'react';
 import isEqual from 'lodash/isEqual';
@@ -44,6 +51,7 @@ export default function Tree({ name, setName }) {
   const saveToFirestore = async () => {
     try {
       await setDoc(doc(db, 'gradial', 'rt'), treeState);
+      await addChangelogEntry(name);
       alert('Saved to Firestore!');
     } catch (error) {
       alert('Error saving: ' + error.message);
@@ -53,6 +61,16 @@ export default function Tree({ name, setName }) {
   if (loading || !treeState) {
     return <div>Loading...</div>;
   }
+
+  const addChangelogEntry = async name => {
+    const changelogRef = doc(db, 'gradial', 'changelog');
+    await updateDoc(changelogRef, {
+      mods: arrayUnion({
+        timestamp: Date.now(),
+        name,
+      }),
+    });
+  };
 
   const onNameClick = ({ defaultOnClick, nodeData }) => {
     if (nodeData.name === 'Gradial (Main)') return;
