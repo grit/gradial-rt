@@ -30,6 +30,7 @@
   gap: 8px;
   min-width: 0;
   overflow: hidden;
+  padding: 5px;
 }
 
 .sub-header-wrapper {
@@ -39,7 +40,6 @@
   font-size: 1.1rem;
   min-width: 0;
   overflow: hidden;
-  /* Prevent header from growing with logo */
   height: 3em;
   line-height: 3em;
 }
@@ -71,10 +71,10 @@
 @keyframes bounce {
   0%,
   100% {
-    transform: translateY(0); /* Start and end at original position */
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-15px); /* Move up 15px at the peak of the bounce */
+    transform: translateY(-15px);
   }
 }
 

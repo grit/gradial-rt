@@ -1,7 +1,6 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* or set a specific height */
 }
 
 .heading {
@@ -51,10 +50,17 @@
   padding: 16px;
   background: #f9f9f9;
   margin-bottom: 50px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 10px;
 }
 
 @media (max-width: 600px) {
   .folderTreeContainer {
     flex: unset;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-left: 0px;
+    border-radius: 0px;
   }
 }
