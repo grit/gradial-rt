@@ -72,21 +72,23 @@ export default function Tree({ name, setName }) {
     });
   };
 
-  const onNameClick = ({ defaultOnClick, nodeData }) => {
-    if (nodeData.name === 'Gradial (Main)') return;
+  const onNameClick = ({ defaultOnClick }) => {
     defaultOnClick();
   };
 
-  const DeleteIcon = ({ onClick: defaultOnClick }) => {
+  const DeleteIcon = ({ onClick: defaultOnClick, nodeData }) => {
     const handleClick = () => {
+      if (nodeData.name === 'Gradial (Main)') {
+        alert('Cannot delete main folder!');
+        return;
+      }
       defaultOnClick();
     };
 
     return <MdDelete onClick={handleClick} />;
   };
-  const FolderOpenIcon = ({ onClick: defaultOnClick, nodeData }) => {
+  const FolderOpenIcon = ({ onClick: defaultOnClick }) => {
     const handleClick = () => {
-      if (nodeData.name === 'Gradial (Main)') return;
       defaultOnClick();
     };
 
