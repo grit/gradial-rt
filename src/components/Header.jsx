@@ -18,7 +18,7 @@ export default function Header() {
       </h1>
       <div>
         <span
-          style={{ cursor: 'default', fontWeight: 'bold', fontSize: '18px' }}
+          style={{ cursor: 'default', fontWeight: 'bold', fontSize: '14px' }}
         >
           Dashboard
         </span>
