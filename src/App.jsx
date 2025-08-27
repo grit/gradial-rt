@@ -16,12 +16,21 @@ function App() {
     const handleUnload = () => {
       send({ x: null, y: null, name, left: true });
     };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        handleUnload();
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('beforeunload', handleUnload);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('beforeunload', handleUnload);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [send, name]);
 
