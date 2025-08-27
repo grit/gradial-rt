@@ -12,7 +12,7 @@ const db = getFirestore(app);
 export default function Tree({ name, setName }) {
   const [treeState, setTreeState] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [inputActive, setInputActive] = useState(true);
+  const [inputActive, setInputActive] = useState(false);
 
   useEffect(() => {
     const docRef = doc(db, 'gradial', 'rt');
@@ -87,7 +87,7 @@ export default function Tree({ name, setName }) {
             className={styles.nameInput}
             onChange={e => setName(e.target.value)}
             placeholder='Pick a name'
-            autoFocus={false}
+            autoFocus={inputActive}
             onBlur={() => setInputActive(false)}
             onKeyDown={e => {
               if (e.key === 'Enter') {
