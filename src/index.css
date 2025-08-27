@@ -68,15 +68,12 @@ button:focus-visible {
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .TreeNode .iconContainer {
   margin-right: 8px;
-}
-
-.AddFolderIcon {
-  display: none;
+  white-space: nowrap;
 }
 
 .FolderTree {

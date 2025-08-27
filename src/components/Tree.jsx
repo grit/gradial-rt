@@ -59,8 +59,7 @@ export default function Tree({ name, setName }) {
     defaultOnClick();
   };
 
-  const DeleteIcon = ({ onClick: defaultOnClick, nodeData }) => {
-    if (nodeData.isOpen) return;
+  const DeleteIcon = ({ onClick: defaultOnClick }) => {
     const handleClick = () => {
       defaultOnClick();
     };
