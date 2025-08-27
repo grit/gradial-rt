@@ -52,7 +52,7 @@ export default function Tree({ name, setName }) {
     try {
       await setDoc(doc(db, 'gradial', 'rt'), treeState);
       await addChangelogEntry(name);
-      alert('Saved to Firestore!');
+      alert('Your changes have been saved successfully.');
     } catch (error) {
       alert('Error saving: ' + error.message);
     }
