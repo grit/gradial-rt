@@ -15,4 +15,12 @@ Currently both the live version and local version access the deployed and hosted
 
 ![Ex.](./demo.gif)
 
+Some features of the mock prototype:
+
+- The application persists data in real time using firestore, and any changes made by one client (once saved) are reflected for all other clients interacting with the same application. Updates to the database trigger a callback function whenever a change occurs using the onSnapshot() method, rerendering the client side for all active listeners.
+- Any changes made to directory structure require the 'Save Modifications' button to be selected in order to persist it past the temporary local state. 
+- Clients are able to see the cursor of other connected clients moving around within the application viewport (on both desktop and mobile)
+- Users can change their guest 'username' at any point using the input field at the top. This change will be reflected on others viewing your cursor on their own client.
+- Changelog is automatically updated whenever a 'Save Modification' event occurs - showcasing the user who made the modification as well as the timestamp.
+
 There are many next steps to go from here, as this is just a basic prototype of interactions between clients for a file directory representation. Some immediate things that come to mind for a more robust project would be incorporating TypeScript for static type checking, implementing ability to download and upload actual files/folders, security/authentication for database writes (as right now any user can publicly modify the directory), testing - both unit and integration as needed, robust error handling especially around the websocket connections (errors and closures), increased server-side scaling to handle large number of visitors interacting with the platform, throttling/debouncing interactions to limit number of websocket messages sent per any given time, and improved loading/save/alert states.
