@@ -78,25 +78,27 @@ export default function Tree({ name, setName }) {
 
   return (
     <div className={styles.wrapper}>
-      <div>
-        <div className={styles.heading}>
-          <span>Directory</span>
-          <input
-            type='text'
-            value={name}
-            className={styles.nameInput}
-            onChange={e => setName(e.target.value)}
-            placeholder='Pick a name'
-            autoFocus={inputActive}
-            onBlur={() => setInputActive(false)}
-            onKeyDown={e => {
-              if (e.key === 'Enter') {
-                setInputActive(false);
-                e.target.blur();
-              }
-            }}
-          />
-        </div>
+      <div className={styles.heading}>
+        <button className={styles.saveButton} onClick={saveToFirestore}>
+          Save Modifications
+        </button>
+        <input
+          type='text'
+          value={name}
+          className={styles.nameInput}
+          onChange={e => setName(e.target.value)}
+          placeholder='Pick a name'
+          autoFocus={inputActive}
+          onBlur={() => setInputActive(false)}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              setInputActive(false);
+              e.target.blur();
+            }
+          }}
+        />
+      </div>
+      <div className={styles.folderTreeContainer}>
         <FolderTree
           data={treeState}
           onChange={newTree => {
@@ -109,9 +111,6 @@ export default function Tree({ name, setName }) {
           onNameClick={onNameClick}
           iconComponents={{ DeleteIcon, FolderOpenIcon }}
         />
-        <button className={styles.saveButton} onClick={saveToFirestore}>
-          Save Modifications
-        </button>
       </div>
     </div>
   );
