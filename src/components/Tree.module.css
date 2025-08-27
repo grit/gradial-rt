@@ -7,7 +7,7 @@
 .heading {
   flex-shrink: 0;
   padding: 16px;
-  background: #fff;
+  background: #ffe5e5;
   z-index: 1;
 }
 
@@ -51,4 +51,10 @@
   padding: 16px;
   background: #f9f9f9;
   margin-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+  .folderTreeContainer {
+    flex: unset;
+  }
 }

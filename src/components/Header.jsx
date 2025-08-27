@@ -17,7 +17,11 @@ export default function Header() {
         <span className={styles.subtitle}>- RT</span>
       </h1>
       <div>
-        <span style={{ cursor: 'default' }}>Dashboard</span>
+        <span
+          style={{ cursor: 'default', fontWeight: 'bold', fontSize: '18px' }}
+        >
+          Dashboard
+        </span>
         <a>
           <img src={viteLogo} className={styles.logo} alt='Vite logo' />
         </a>
