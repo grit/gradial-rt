@@ -2,7 +2,6 @@ import TreeWrapper from './components/TreeWrapper';
 import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import useWebSocket from './config/useWebsocket';
-// import { HiCursorArrowRipple } from 'react-icons/hi2';
 import favicon from './assets/favicon.ico';
 
 function App() {
