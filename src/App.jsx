@@ -3,6 +3,7 @@ import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import useWebSocket from './config/useWebsocket';
 import favicon from './assets/favicon.ico';
+import styles from './App.module.css';
 
 function App() {
   const [name, setName] = useState('guest');
@@ -25,7 +26,7 @@ function App() {
   }, [send, name]);
 
   return (
-    <div style={{ height: '100vh', maxHeight: '100vh', overflow: 'hidden' }}>
+    <div className={styles.wrapper}>
       {Object.entries(cursors).map(([id, cursor]) =>
         cursor.left ? null : (
           <div
@@ -33,25 +34,9 @@ function App() {
             className='remote-cursor'
             style={{ left: cursor.x, top: cursor.y, position: 'absolute' }}
           >
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img
-                src={favicon}
-                alt='cursor'
-                style={{ width: 15, height: 15 }}
-              />
-              <span
-                style={{
-                  marginLeft: 8,
-                  fontSize: 14,
-                  color: '#fff',
-                  background: 'rgba(0,0,0,0.5)',
-                  padding: '2px 6px',
-                  borderRadius: '4px',
-                  position: 'relative',
-                  whiteSpace: 'nowrap',
-                  pointerEvents: 'none',
-                }}
-              >
+            <div className={styles.cursorInner}>
+              <img src={favicon} alt='cursor' className={styles.cursorImg} />
+              <span className={styles.cursorName}>
                 {cursor.name || 'guest'}
               </span>
             </div>
