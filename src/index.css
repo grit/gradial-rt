@@ -97,4 +97,5 @@ button:focus-visible {
   pointer-events: none; /* Allows clicks to pass through */
   transform: translate(-50%, -50%); /* Center the cursor on the coordinates */
   transition: transform 0.1s linear; /* Optional smooth movement */
+  z-index: 10;
 }
