@@ -12,6 +12,7 @@ const db = getFirestore(app);
 export default function Tree({ name, setName }) {
   const [treeState, setTreeState] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [inputActive, setInputActive] = useState(true);
 
   useEffect(() => {
     const docRef = doc(db, 'gradial', 'rt');
@@ -86,6 +87,14 @@ export default function Tree({ name, setName }) {
             className={styles.nameInput}
             onChange={e => setName(e.target.value)}
             placeholder='Pick a name'
+            autoFocus={false}
+            onBlur={() => setInputActive(false)}
+            onKeyDown={e => {
+              if (e.key === 'Enter') {
+                setInputActive(false);
+                e.target.blur();
+              }
+            }}
           />
         </div>
         <FolderTree
