@@ -69,11 +69,17 @@ button:focus-visible {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: default;
 }
 
 .TreeNode .iconContainer {
   margin-right: 8px;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.TreeNode:first-of-type .iconContainer {
+  cursor: default;
 }
 
 .FolderTree {

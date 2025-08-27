@@ -37,6 +37,7 @@
   border-radius: 5px;
   margin-top: 5px;
   width: 100px;
+  border: 1px solid #ac93c6bf;
 }
 
 .nameInput:focus {
